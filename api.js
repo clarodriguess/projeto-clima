@@ -3,6 +3,7 @@
  * @description Módulo responsável pela integração com as APIs Open-Meteo para busca de geolocalização e dados climáticos.
  * @author Gemini Code Assist
  * @version 1.1.0
+ * @see {@link https://open-meteo.com/|Open-Meteo} para termos de uso dos dados (CC BY 4.0).
  */
 
 // Constantes de Configuração
@@ -161,3 +162,18 @@ function toggleLoading(button, isLoading) {
     button.disabled = isLoading;
     button.textContent = isLoading ? 'Buscando...' : 'Buscar';
 }
+
+// Gerenciamento de Alertas de Privacidade e Licenciamento
+document.getElementById('privacy-trigger')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert("Privacidade: Este aplicativo processa sua busca localmente para consultar a API Open-Meteo. Nenhum dado pessoal ou histórico de localização é armazenado em nossos servidores.");
+});
+
+document.getElementById('license-trigger')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert("Licenciamento:\n" +
+          "- Software: Licença ISC\n" +
+          "- Dados: Open-Meteo (CC BY 4.0)\n" +
+          "- Ícones: Weather Icons (SIL OFL 1.1)\n\n" +
+          "Consulte os arquivos LICENSE e NOTICE.md para detalhes.");
+});

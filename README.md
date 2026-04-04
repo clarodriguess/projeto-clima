@@ -57,3 +57,14 @@ projeto-clima/
 └── readme.md          # Documentação do projeto
 ```
 
+## 📄 Licença
+
+Este projeto está licenciado sob a **Licença ISC**. Consulte o arquivo `LICENSE` para o texto completo em Inglês e Português.
+
+### Atribuições Obrigatórias
+De acordo com os termos de uso das ferramentas utilizadas:
+- Dados meteorológicos fornecidos por Open-Meteo.com (CC BY 4.0).
+- Ícones climáticos por Weather Icons (SIL OFL 1.1/MIT).
+
+---
+*Desenvolvido com foco em qualidade de código e experiência do usuário.*

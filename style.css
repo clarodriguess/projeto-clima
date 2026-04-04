@@ -98,3 +98,22 @@ button:hover { background-color: #2980b9; }
     flex-direction: column;
     font-size: 0.9rem;
 }
+
+.footer-notices {
+    position: fixed;
+    bottom: 20px;
+    font-size: 0.75rem;
+    opacity: 0.8;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-notices a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-notices a:hover {
+    text-decoration: underline;
+}
