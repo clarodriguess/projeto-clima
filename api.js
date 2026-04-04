@@ -28,6 +28,10 @@ document.getElementById('weather-form').addEventListener('submit', async (e) => 
         
         const weatherData = await weatherResponse.json();
 
+        if (!weatherData.current_weather) {
+            throw new Error('Não foi possível obter os dados meteorológicos atuais.');
+        }
+
         // 3. Atualizar UI e Temas
         displayWeather(name, admin1, country, weatherData.current_weather);
         updateTheme(weatherData.current_weather.is_day);
