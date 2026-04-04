@@ -83,3 +83,18 @@ button:hover { background-color: #2980b9; }
 #temperature { font-size: 3.5rem; font-weight: bold; }
 
 #weather-desc { font-size: 1.2rem; font-weight: 500; }
+
+.weather-extra {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 10px;
+}
+
+.extra-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+}

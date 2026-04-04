@@ -21,6 +21,9 @@ describe('Testes da API de Clima (api.js)', () => {
                 <i id="weather-icon"></i>
                 <span id="temperature"></span>
                 <p id="weather-desc"></p>
+                <span id="humidity"></span>
+                <span id="wind-speed"></span>
+                <span id="precipitation"></span>
             </div>
         `;
 
@@ -56,13 +59,23 @@ describe('Testes da API de Clima (api.js)', () => {
         // Mock Weather
         fetch.mockResolvedValueOnce({
             ok: true,
-            json: async () => ({ current_weather: { temperature: 25, weathercode: 0, is_day: 1 } })
+            json: async () => ({ 
+                current: { 
+                    temperature_2m: 25, 
+                    weather_code: 0, 
+                    is_day: 1,
+                    relative_humidity_2m: 60,
+                    wind_speed_10m: 15,
+                    precipitation: 0.0
+                } 
+            })
         });
 
         await submitForm('São Paulo');
 
         expect(document.getElementById('city-name').textContent).toContain('São Paulo');
         expect(document.getElementById('temperature').textContent).toBe('25°C');
+        expect(document.getElementById('humidity').textContent).toBe('60');
         expect(document.getElementById('result-container').classList.contains('hidden')).toBe(false);
     });
 
@@ -87,7 +100,7 @@ describe('Testes da API de Clima (api.js)', () => {
 
         await submitForm('Londres');
 
-        expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Falha na comunicação'));
+        expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Serviço de geolocalização indisponível'));
     });
 
     // --- 3.7. Casos Extremos ---
@@ -100,7 +113,7 @@ describe('Testes da API de Clima (api.js)', () => {
 
         await submitForm('Paris');
 
-        expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Falha na comunicação'));
+        expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Serviço de geolocalização indisponível'));
     });
 
     test('6. Erro de rede (Rejeição da Promise)', async () => {
@@ -112,7 +125,7 @@ describe('Testes da API de Clima (api.js)', () => {
     });
 
     test('7. Mudança inesperada no formato JSON (Campos faltando)', async () => {
-        // Geocoding ok, mas Weather retorna JSON malformado (sem current_weather)
+        // Geocoding ok, mas Weather retorna JSON malformado (sem current)
         fetch.mockResolvedValueOnce({
             ok: true,
             json: async () => ({ results: [{ latitude: 0, longitude: 0, name: 'Teste' }] })
@@ -126,7 +139,7 @@ describe('Testes da API de Clima (api.js)', () => {
 
         // O código tentará acessar data.temperature que será undefined
         // Resultando em um erro capturado pelo try/catch
-        expect(global.alert).toHaveBeenCalled();
+        expect(global.alert).toHaveBeenCalledWith(expect.stringContaining('Dados climáticos não disponíveis'));
     });
 
     test('8. Conexão lenta (Simulação de delay)', async () => {
@@ -139,7 +152,16 @@ describe('Testes da API de Clima (api.js)', () => {
 
         fetch.mockResolvedValueOnce({
             ok: true,
-            json: async () => ({ current_weather: { temperature: 20, weathercode: 0, is_day: 1 } })
+            json: async () => ({ 
+                current: { 
+                    temperature_2m: 20, 
+                    weather_code: 0, 
+                    is_day: 1,
+                    relative_humidity_2m: 50,
+                    wind_speed_10m: 5,
+                    precipitation: 0
+                } 
+            })
         });
 
         await submitForm('Lento');

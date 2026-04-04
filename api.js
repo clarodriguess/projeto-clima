@@ -85,15 +85,15 @@ async function getCoordinates(city) {
  * const weather = await getWeather(-23.55, -46.63);
  */
 async function getWeather(lat, lon) {
-    const url = `${WEATHER_API_URL}?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+    const url = `${WEATHER_API_URL}?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,is_day,wind_speed_10m&timezone=auto`;
     const response = await fetch(url);
     
     if (!response.ok) throw new Error('Serviço meteorológico indisponível.');
     
     const data = await response.json();
-    if (!data.current_weather) throw new Error('Dados climáticos não disponíveis para esta região.');
+    if (!data.current) throw new Error('Dados climáticos não disponíveis para esta região.');
     
-    return data.current_weather;
+    return data.current;
 }
 
 /**
@@ -118,9 +118,14 @@ function displayWeather(location, weather) {
     }
 
     // Temperatura e Descrição
-    document.getElementById('temperature').textContent = `${Math.round(weather.temperature)}°C`;
+    document.getElementById('temperature').textContent = `${Math.round(weather.temperature_2m)}°C`;
     
-    const condition = WEATHER_CONDITION_MAP[weather.weathercode] || { desc: 'Condições atuais', iconDay: 'wi-na', iconNight: 'wi-na' };
+    // Novos Dados: Umidade, Vento e Precipitação
+    document.getElementById('humidity').textContent = weather.relative_humidity_2m;
+    document.getElementById('wind-speed').textContent = Math.round(weather.wind_speed_10m);
+    document.getElementById('precipitation').textContent = weather.precipitation.toFixed(1);
+    
+    const condition = WEATHER_CONDITION_MAP[weather.weather_code] || { desc: 'Condições atuais', iconDay: 'wi-na', iconNight: 'wi-na' };
     const currentCondition = {
         desc: condition.desc,
         icon: weather.is_day ? condition.iconDay : condition.iconNight
