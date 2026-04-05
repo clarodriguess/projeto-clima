@@ -177,3 +177,4 @@ document.getElementById('license-trigger')?.addEventListener('click', (e) => {
           "- Ícones: Weather Icons (SIL OFL 1.1)\n\n" +
           "Consulte os arquivos LICENSE e NOTICE.md para detalhes.");
 });
+

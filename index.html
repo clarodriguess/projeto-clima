@@ -8,30 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="day-theme"> <!-- Padrão dia -->
-    <div class="card">
-        <form id="weather-form">
-            <input type="text" id="city-input" placeholder="Digite o nome da cidade..." required>
-            <button type="submit">Buscar</button>
-        </form>
+<!-- <div class="stars" id="stars"></div> -->
+<body class="initial-theme" > <!-- Começa com o tema inicial -->
 
-        <div id="result-container" class="hidden">
-            <div class="weather-info">
-                <h2 id="city-name"></h2>
-                <p id="date-time"></p>
-                <div class="main-weather">
-                    <i id="weather-icon" class="wi"></i>
-                    <span id="temperature"></span>
+             <div class="title-container">
+                 <h1 class="app-title">Nimbus</h1>
+                <p class="app-text">· Saiba o que o céu reserva para você hoje ·</p>
+             </div>
+    
+                <div class="card">
+    
+                <form id="weather-form">
+                    <input type="text" id="city-input" placeholder="Digite o nome da cidade..." required>
+                    <button type="submit">Buscar</button>
+                </form>
+    
+                <div id="result-container" class="hidden">
+                    <div class="weather-info">
+                        <h2 id="city-name"></h2>
+                        <p id="date-time"></p>
+                        <div class="main-weather">
+                            <i id="weather-icon" class="wi"></i>
+                            <span id="temperature"></span>
+                        </div>
+                        <p id="weather-desc"></p>
+                        <div class="weather-extra">
+                            <div class="extra-item"><i class="wi wi-humidity"></i> <span id="humidity">--</span>%</div>
+                            <div class="extra-item"><i class="wi wi-strong-wind"></i> <span id="wind-speed">--</span> km/h</div>
+                            <div class="extra-item"><i class="wi wi-raindrops"></i> <span id="precipitation">--</span> mm</div>
+                        </div>
+                    </div>
                 </div>
-                <p id="weather-desc"></p>
-                <div class="weather-extra">
-                    <div class="extra-item"><i class="wi wi-humidity"></i> <span id="humidity">--</span>%</div>
-                    <div class="extra-item"><i class="wi wi-strong-wind"></i> <span id="wind-speed">--</span> km/h</div>
-                    <div class="extra-item"><i class="wi wi-raindrops"></i> <span id="precipitation">--</span> mm</div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <!-- </div> -->
+    
+</div>
+  
 
     <footer class="footer-notices">
         <a href="#" id="privacy-trigger">Aviso de Privacidade</a> | 
