@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:Georgia, 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ body {
 
 /* Temas Dinâmicos */
 .day-theme {
-    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
+    background: linear-gradient(135deg, #7dffe7 0%, #9fabe3 100%);
     color: #2c3e50;
 }
 
@@ -54,17 +54,22 @@ body {
 }
 
 button {
-    padding: 10px 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    padding: 10px 20px;
     border-radius: 8px;
     border: none;
-    background-color: #3498db;
+    background-color:#2980b9;
     color: white;
     cursor: pointer;
     font-weight: bold;
     transition: background 0.3s;
 }
 
-button:hover { background-color: #2980b9; }
+button:hover { 
+    background-color: #2d2d61; 
+    
+}
 
 .hidden { display: none; }
 
