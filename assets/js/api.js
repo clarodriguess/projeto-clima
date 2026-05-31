@@ -160,7 +160,7 @@ function updateTheme(isDay) {
  */
 function toggleLoading(button, isLoading) {
     button.disabled = isLoading;
-    button.textContent = isLoading ? 'Buscando...' : 'Buscar';
+    button.textContent = isLoading ? '...' : 'Buscar';
 }
 
 // Gerenciamento de Alertas de Privacidade e Licenciamento
